@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",},
         features = "src/test/resources/Features",
         glue = "stepdefinitions",
-        tags = "@ab",
+        tags = "@teknosa",
         dryRun =false
 
         // eger dry run true ise: features dosyalarinda tanimlanmayan dosyalari tanimlamak icin dry run true olacak

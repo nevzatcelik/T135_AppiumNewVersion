@@ -36,8 +36,11 @@ public class Driver {
                     .setPlatformName("Android")
                     .setPlatformVersion("13.0")
                     .setAutomationName("UiAutomator2")
-                    .setApp("C:\\Users\\ahmet\\IdeaProjects\\Appium_T135_NewVersion\\Apps\\Teknosa – Alışveriş, Teknoloji_7.2.3_APKPure (1).apk");
-
+                    //.setApp("C:\\Users\\ahmet\\IdeaProjects\\Appium_T135_NewVersion\\Apps\\Teknosa – Alışveriş, Teknoloji_7.2.3_APKPure (1).apk");
+                    .setAppPackage("com.tmob.teknosa")
+                    .setAppActivity("com.tmob.teknosa.MainActivity")
+                    .setNoReset(false)
+                    .setAutoGrantPermissions(true);
 
             if (ConfigReader.getProperty("platformName").equals("Android")) {
 

@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -28,14 +29,16 @@ public class ReusableMethods {
                  Thread.sleep(beklemeSuresi);
     }
 
-    public static void scrollWithUiScrollable(String elementText) {
-        AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
-        driver.findElement(androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\\\"\" + elementText + \"\\\"))"));
-    }
     public static void scrollWithUiScrollableAndClick(String elementText) {
         AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
-        driver.findElement(androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\\\"\" + elementText + \"\\\"))"));
-        driver.findElement(xpath("//*[@text='\" + elementText + \"']")).click();
+        driver.findElement(androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))"));
+        driver.findElement(By.xpath("//*[@text='" + elementText + "']")).click();
+
+    }
+
+    public static void scrollWithUiScrollable(String elementText) {
+        AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
+        driver.findElement(androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))"));
     }
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
