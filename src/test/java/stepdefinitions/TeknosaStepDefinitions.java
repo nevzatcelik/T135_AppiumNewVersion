@@ -36,11 +36,11 @@ public class TeknosaStepDefinitions {
     }
     @Given("filtrele bolumune tiklanir")
     public void filtrele_bolumune_tiklanir() {
-
+      page.filtreleButonu.click();
     }
-    @Given("Marka bolumunden marka secimi yapilir")
-    public void marka_bolumunden_marka_secimi_yapilir() {
-
+    @Given("Marka bolumunden marka secimi {string} yapilir")
+    public void marka_bolumunden_marka_secimi_yapilir(String markaSecimi) {
+     page.markaSecmeMethodu(markaSecimi);
     }
     @Given("siralama yapilirak azalan fiyat secilir")
     public void siralama_yapilirak_azalan_fiyat_secilir() {
