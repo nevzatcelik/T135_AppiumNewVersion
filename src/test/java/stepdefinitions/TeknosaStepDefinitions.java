@@ -1,6 +1,8 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
+import org.openqa.selenium.support.PageFactory;
 import pages.TeknosaPage;
 import utils.Driver;
 import utils.ReusableMethods;
@@ -42,12 +44,25 @@ public class TeknosaStepDefinitions {
     public void marka_bolumunden_marka_secimi_yapilir(String markaSecimi) {
      page.markaSecmeMethodu(markaSecimi);
     }
-    @Given("siralama yapilirak azalan fiyat secilir")
-    public void siralama_yapilirak_azalan_fiyat_secilir() {
-
+    @Given("siralama yapilirak {string} secilir")
+    public void siralama_yapilirak_azalan_fiyat_secilir(String siralamaSecenegi) throws InterruptedException {
+      Thread.sleep(1500);
+        page.siralaButonu.click();
+      ReusableMethods.scrollWithUiScrollableAndClick(siralamaSecenegi);
     }
     @Given("fiyatlarin azalan duzende oldugu test edilir")
-    public void fiyatlarin_azalan_duzende_oldugu_test_edilir() {
+    public void fiyatlarin_azalan_duzende_oldugu_test_edilir() throws InterruptedException {
+         String enpahaloFiyat=page.enPahaliFiyat.getText();
+         enpahaloFiyat=enpahaloFiyat.replaceAll("\\D","");
+         System.out.println(enpahaloFiyat);
+         Thread.sleep(2000);
+         ReusableMethods.dikeyKaydirma(Driver.getAndroidDriver(),0.80,0.20,0.50,400);
+         String enUcuzFiyat=page.enUcuzCihazFiyati.getText();
+         enUcuzFiyat=enpahaloFiyat.replaceAll("\\D","");
+         System.out.println(enUcuzFiyat);
+         Assert.assertTrue(Integer.parseInt(enpahaloFiyat)>Integer.parseInt(enUcuzFiyat));
+
+
 
     }
 

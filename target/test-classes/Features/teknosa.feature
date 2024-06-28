@@ -7,10 +7,10 @@ Feature: Kullanici teknosa uygulamasindaki gorevleri yerine getirir
   * Ilk ekran bolumunden atlaya tiklanir
   * footer bolumundeki "Kategoriler" butonuna tiklanir
   * kategoriler bolumunden "Telefon" bolumune tiklanir
-  * telefon sayfasindan cihaz secimi "" yapilir
+  * telefon sayfasindan cihaz secimi "Cep Telefonu" yapilir
   * filtrele bolumune tiklanir
-  * Marka bolumunden marka secimi yapilir
-  * siralama yapilirak azalan fiyat secilir
+  * Marka bolumunden marka secimi "TCL" yapilir
+  * siralama yapilirak "Azalan Fiyat" secilir
   * fiyatlarin azalan duzende oldugu test edilir
 
 
