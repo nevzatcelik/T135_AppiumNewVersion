@@ -1,11 +1,17 @@
 package stepdefinitions;
 
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 import pages.TeknosaPage;
 import utils.Driver;
 import utils.ReusableMethods;
+
+import java.io.IOException;
+import java.time.Duration;
 
 public class TeknosaStepDefinitions {
     TeknosaPage page=new TeknosaPage();
@@ -96,6 +102,11 @@ public class TeknosaStepDefinitions {
 
         Assert.assertEquals(Integer.parseInt(fiyat1)*2,Integer.parseInt(fiyat2));
 
+    }
+
+    @Given("kullanici cekmek istedigi screenShot i text uzerinden {string} alir")
+    public void kullanici_cekmek_istedigi_screen_shot_i_text_uzerinden_alir(String screenShot) throws IOException {
+        ReusableMethods.screenShotElement(screenShot);
     }
 
 }

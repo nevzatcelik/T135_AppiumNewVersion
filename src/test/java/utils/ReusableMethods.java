@@ -6,14 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -25,6 +24,7 @@ import static io.appium.java_client.AppiumBy.androidUIAutomator;
 import static org.openqa.selenium.By.xpath;
 
 public class ReusableMethods {
+
 
     public static void tiklamaMethodu(int xKoordinati,int yKoordinati,int beklemeSuresi ) throws InterruptedException {
         TouchAction action=new TouchAction<>(Driver.getAndroidDriver());
@@ -72,7 +72,6 @@ public class ReusableMethods {
     public static void dikeyKaydirma(RemoteWebDriver driver, double baslangicYuzdesi, double bitisYuzdesi, double sabitYuzde, int sure) {
         // 1. WebDriver'ın pencere boyutunu alır
         Dimension boyut = driver.manage().window().getSize();
-
         // 2. Sabit noktanın x koordinatını hesaplar (pencere genişliğinin belirtilen yüzdesi)
         int sabitNokta = (int) (boyut.width * sabitYuzde);
 
@@ -100,6 +99,24 @@ public class ReusableMethods {
         driver.perform(Collections.singletonList(kaydirma));
     }
 
+
+    public static void screenShotElement(String text) throws IOException {
+        WebElement element = Driver.getAndroidDriver().findElement(xpath("//*[@text='"+text+"']"));
+        org.openqa.selenium.Point location = element.getLocation();
+        org.openqa.selenium.Dimension size = element.getSize();
+
+        // Ekran görüntüsünü alın ve belirli bölgeyi kırpın
+        File screenshot = Driver.getAndroidDriver().getScreenshotAs(OutputType.FILE);
+        BufferedImage fullImage = ImageIO.read(screenshot);
+        BufferedImage croppedImage = fullImage.getSubimage(location.getX(), location.getY(), size.getWidth(), size.getHeight());
+
+        // Kırpılmış görüntüyü kaydedin
+        File output = new File("kırpılmış_screenshot.png");
+        ImageIO.write(croppedImage, "png", output);
+
+        // Bağlantıyı kapat
+       Driver.quitAppiumDriver();
+    }
 
 
 }
