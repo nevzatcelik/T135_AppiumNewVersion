@@ -46,7 +46,7 @@ public class TeknosaStepDefinitions {
     }
     @Given("siralama yapilirak {string} secilir")
     public void siralama_yapilirak_azalan_fiyat_secilir(String siralamaSecenegi) throws InterruptedException {
-      Thread.sleep(1500);
+      Thread.sleep(2000);
         page.siralaButonu.click();
       ReusableMethods.scrollWithUiScrollableAndClick(siralamaSecenegi);
     }
@@ -63,6 +63,38 @@ public class TeknosaStepDefinitions {
          Assert.assertTrue(Integer.parseInt(enpahaloFiyat)>Integer.parseInt(enUcuzFiyat));
 
 
+
+    }
+    @Given("en ucuz cihaz a tiklanir")
+    public void en_ucuz_cihaz_a_tiklanir() throws InterruptedException {
+     Thread.sleep(2500);
+     page.enUcuzSamsungCihaz.click();
+    }
+    @Given("cihaz {string} sepete eklenir")
+    public void cihaz_sepete_eklenir(String sepeteEkle) {
+    ReusableMethods.scrollWithUiScrollableAndClick(sepeteEkle);
+    }
+    @Given("{string} bolumune tiklanir")
+    public void sepetime_git_bolumune_tiklanir(String urunuEkleButonu) {
+     ReusableMethods.scrollWithUiScrollableAndClick(urunuEkleButonu);
+    }
+    @Given("urunun sayisi arttirildiginda fiyatinin arttirildigi dogrulanir")
+    public void urunun_sayisi_arttirildiginda_fiyatinin_arttirildigi_dogrulanir() throws InterruptedException {
+    Thread.sleep(2500);
+        String fiyat1=page.sepetimUrunFiyati.getText(); // 5.929,00 TL
+        System.out.println(fiyat1);
+        fiyat1=fiyat1.replaceAll("\\D","");// 592900
+        fiyat1=fiyat1.substring(0,fiyat1.length()-2); // 5929
+        System.out.println(fiyat1);
+        page.artiButonu.click();
+        Thread.sleep(3000);
+        String fiyat2=page.sepetimUrunFiyati.getText(); // 1185800
+        fiyat2=fiyat2.replaceAll("\\D","");
+        fiyat2=fiyat2.substring(0,fiyat2.length()-2); // 11858
+        System.out.println(fiyat2);
+        System.out.println(fiyat2);
+
+        Assert.assertEquals(Integer.parseInt(fiyat1)*2,Integer.parseInt(fiyat2));
 
     }
 

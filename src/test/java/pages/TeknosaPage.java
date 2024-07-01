@@ -41,6 +41,16 @@ public class TeknosaPage {
     @FindBy(xpath = "(//*[@class='android.widget.TextView'])[13]")
     public WebElement enUcuzCihazFiyati;
 
+    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[7]")
+    public WebElement enUcuzSamsungCihaz;
+    //*[@bounds='[32,870][644,1512]']
+
+    @FindBy(xpath = "//*[@text='+']")
+    public WebElement artiButonu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.TextView'])[7]")
+    public WebElement sepetimUrunFiyati;
+
 
 
 

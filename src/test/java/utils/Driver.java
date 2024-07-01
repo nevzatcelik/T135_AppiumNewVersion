@@ -40,7 +40,7 @@ public class Driver {
                     .setAppPackage("com.tmob.teknosa")
                     .setAppActivity("com.tmob.teknosa.MainActivity")
                     .setNoReset(false)
-                    .setAutoGrantPermissions(true);
+                    .setAutoGrantPermissions(true); // uygulama ici izinleri true kabul eder false reddeder
 
             if (ConfigReader.getProperty("platformName").equals("Android")) {
 
